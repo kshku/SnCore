@@ -1,38 +1,40 @@
 cmake_minimum_required(VERSION 3.15...3.31)
 
-project(SnTemplate VERSION 0.0.0 DESCRIPTION "A template for Sn* projects" LANGUAGES C)
+project(SnCore VERSION 0.0.0 DESCRIPTION "Core foundation for Sn* projects" LANGUAGES C)
 
 set(CMAKE_C_EXTENSIONS OFF)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_STANDARD 17)
 
-add_library(sn_template_configs INTERFACE)
+add_library(sncore INTERFACE)
+
+target_include_directories(sncore INTERFACE
+    "${CMAKE_CURRENT_SOURCE_DIR}/include"
+)
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    target_compile_definitions(sn_template_configs INTERFACE SN_DEBUG)
+    target_compile_definitions(sncore INTERFACE SN_DEBUG)
 endif()
 
 set(gcc_clang_comp "$<COMPILE_LANG_AND_ID:C,Clang,GNU>")
-set(msvc_comp "$<COMPILE_LANG_AND_ID:C,MSVC>")
 
-target_compile_options(sn_template_configs INTERFACE "$<${gcc_clang_comp}:-Wall;-Wextra;-Wformat;-Wuninitialized;-Wpedantic>")
+target_compile_options(sncore INTERFACE "$<${gcc_clang_comp}:-Wall;-Wextra;-Wformat;-Wuninitialized;-Wpedantic>")
+target_compile_options(sncore INTERFACE "$<${gcc_clang_comp}:-fvisibility=hidden>")
 
-target_compile_options(sn_template_configs INTERFACE "$<${gcc_clang_comp}:-fvisibility=hidden>")
+# Install
+include(GNUInstallDirs)
+include(CMakePackageConfigHelpers)
 
-target_compile_definitions(sn_template_configs INTERFACE
-    SN_TEMPLATE_VERSION_MAJOR=${PROJECT_VERSION_MAJOR}
-    SN_TEMPLATE_VERSION_MINOR=${PROJECT_VERSION_MINOR}
-    SN_TEMPLATE_VERSION_PATCH=${PROJECT_VERSION_PATCH}
+install(DIRECTORY include/sncore DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+
+write_basic_package_version_file(
+    "${CMAKE_CURRENT_BINARY_DIR}/SnCoreConfigVersion.cmake"
+    VERSION ${PROJECT_VERSION}
+    COMPATIBILITY SameMajorVersion
 )
 
-option(SN_TEMPLATE_BUILD_SHARED "Build shared library" OFF)
-option(SN_TEMPLATE_BUILD_TEST "Build tests" OFF)
-
-add_subdirectory(docs)
-add_subdirectory(template)
-
-if(SN_TEMPLATE_BUILD_TEST)
-    add_subdirectory("test")
-else()
-    message(STATUS "Building test is disabled")
-endif()
+install(FILES
+    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/SnCoreConfig.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/SnCoreConfigVersion.cmake"
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/sncore
+)
