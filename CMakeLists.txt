@@ -21,8 +21,6 @@ set(gcc_clang_comp "$<COMPILE_LANG_AND_ID:C,Clang,GNU>")
 target_compile_options(sncore INTERFACE "$<${gcc_clang_comp}:-Wall;-Wextra;-Wformat;-Wuninitialized;-Wpedantic>")
 target_compile_options(sncore INTERFACE "$<${gcc_clang_comp}:-fvisibility=hidden>")
 
-add_subdirectory(docs)
-
 # Install
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
