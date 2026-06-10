@@ -58,8 +58,8 @@
 #define SN_IS_POWER_OF_TWO(x)           (((((uint64_t)(x)) - 1) & ((uint64_t)(x))) == 0)
 
 #define SN_IS_ALIGNED(x, align)              ((((uint64_t)(x)) & ((align) - 1)) == 0)
-#define SN_GET_ALIGNED(x, align)             ((void *)((((uint64_t)(x)) + (align) - 1) & ~((align) - 1)))
+#define SN_GET_ALIGNED(x, align) ((((uint64_t)(x)) + (align) - 1) & ~((align) - 1))
 #define SN_GET_ALIGNED_PTR(x, type)          ((type *)SN_GET_ALIGNED((x), alignof(type)))
-#define SN_GET_NEXT_ALIGNED(x, align)        ((void *)((((uint64_t)(x)) + (align)) & ~((align) - 1)))
+#define SN_GET_NEXT_ALIGNED(x, align) ((((uint64_t)(x)) + (align)) & ~((align) - 1))
 #define SN_GET_NEXT_ALIGNED_PTR(x, type)     ((type *)SN_GET_NEXT_ALIGNED((x), alignof(type)))
 #define SN_PTR_DIFF(a, b)                   ((uint64_t)(a) - (uint64_t)(b))
