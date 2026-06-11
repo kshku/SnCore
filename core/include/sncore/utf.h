@@ -7,8 +7,8 @@
 /**
  * @brief Convert UTF-8 to UTF-16 (snprintf-like API).
  *
- * Query mode: pass NULL for utf16 to get the required number of wchar_t (excluding null terminator).
- * Write mode: pass a buffer and its capacity in wchar_t.
+ * Query mode: pass NULL for utf16 to get the required number of wchar_t (excluding null
+ * terminator). Write mode: pass a buffer and its capacity in wchar_t.
  *
  * @param utf8       Null-terminated UTF-8 input string.
  * @param utf16      Output buffer, or NULL to query required size.
