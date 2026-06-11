@@ -1,7 +1,7 @@
 # SnCore
 
-Core foundation for Sn* projects. Header-only C17 library providing platform detection,
-utility macros, API export/import helpers, and shared callback type definitions.
+Core foundation for Sn* projects. Provides platform detection, utility macros, API export/import helpers,
+common callback type definitions, and cross-platform UTF-8/UTF-16 conversion utilities.
 
 ## Contents
 
@@ -9,6 +9,7 @@ utility macros, API export/import helpers, and shared callback type definitions.
 - **defines.h** — Utility macros (inline, assert, min/max, bit flags, alignment, stringify, byte arrays)
 - **api_common.h** — Shared `SN_API_HELPER_EXPORT` / `SN_API_HELPER_IMPORT` macros
 - **types.h** — Common callback type definitions (`SnMemoryAllocateFn`, `SnLockFn`, `SnTimeNowFn`, etc.)
+- **utf8.h** — UTF-8 ↔ UTF-16 conversion functions (Windows: real conversion; other platforms: stubs)
 
 ## Usage
 
@@ -48,4 +49,4 @@ target_link_libraries(myapp PRIVATE sncore)
 
 ## Dependencies
 
-- None. SnCore is a header-only interface library with no external dependencies.
+- None. SnCore has no external dependencies.
