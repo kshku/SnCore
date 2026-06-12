@@ -1,6 +1,12 @@
 # Changelog
 
-## [0.1.0] — 2026-06-11
+## [0.2.0] - 2026-06-12
+
+### Added
+- Add SnMemoryAllocator type
+- Reorder the parameters of the allocator functions
+
+## [0.1.0] - 2026-06-11
 
 - First release. See [0.0.0] section in CHANGELOG.md for full changelog.
 
