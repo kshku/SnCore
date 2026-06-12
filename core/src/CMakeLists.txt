@@ -6,6 +6,11 @@ set(HEADERFILES
     utf.h
 )
 
+
+set(SRCS
+    types.c
+)
+
 set(SPECIFIC_SRCS
     utf.c
 )
@@ -19,7 +24,7 @@ set(INCLUDE_BASE "${PROJECT_SOURCE_DIR}/core/include/sncore")
 
 list(TRANSFORM HEADERFILES PREPEND "${INCLUDE_BASE}/")
 
-target_sources(sncore PRIVATE ${HEADERFILES})
+target_sources(sncore PRIVATE ${HEADERFILES} ${SRCS})
 
 foreach(dir IN LISTS SUBDIRS)
     foreach(src IN LISTS SPECIFIC_SRCS)
