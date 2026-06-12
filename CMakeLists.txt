@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15...3.31)
 
-project(SnCore VERSION 0.1.0 DESCRIPTION "Core foundation for Sn* projects" LANGUAGES C)
+project(SnCore VERSION 0.2.0 DESCRIPTION "Core foundation for Sn* projects" LANGUAGES C)
 
 set(CMAKE_C_EXTENSIONS OFF)
 set(CMAKE_C_STANDARD_REQUIRED ON)
