@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0] - 2026-09-28
+
+### Removed
+- Remove sn_std_allocator, which now lives in SnMemory. SnCore keeps the
+  SnMemoryAllocator type and the callback typedefs, so the vtable contract
+  stays where every Sn* library already includes it.
+
 ## [0.2.0] - 2026-06-12
 
 ### Added

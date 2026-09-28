@@ -8,7 +8,6 @@ set(HEADERFILES
 
 
 set(SRCS
-    types.c
 )
 
 set(SPECIFIC_SRCS
