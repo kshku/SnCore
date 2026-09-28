@@ -19,5 +19,3 @@ typedef void (*SnUnlockFn)(void *data);
 
 typedef uint64_t (*SnTimeNowFn)(void *data);
 typedef uint64_t (*SnThreadIdFn)(void *data);
-
-extern SnMemoryAllocator sn_std_allocator;
