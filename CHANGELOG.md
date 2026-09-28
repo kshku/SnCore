@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.3.1] - 2026-09-28
+
+### Fixed
+- Fix the step used by sn_write_to_bytes and sn_read_from_bytes when writing
+  backwards. As an uint8_t, -1 is 255, so the pointer walked 255 bytes forwards
+  instead of one byte backwards. Values that need more than one byte were
+  written out of bounds and read back wrong
+- Fix the export macros in api_common.h, which branched on SN_STATIC, a macro no
+  library defines. Static builds on Windows were getting __declspec(dllimport) on
+  their own symbols
+- Export sn_utf8_to_utf16 and sn_utf16_to_utf8, which were declared with no
+  export macro at all, so a shared build could not be linked against
+
+### Added
+- Add sncore/api.h, the SN_CORE_API macro, matching the api.h every other Sn*
+  library has
+- List utils.h in the header sources, it was the one public header CMake did
+  not know about
+- Build the tests against a shared library in CI, which is what catches a
+  symbol that is missing an export macro
+
 ## [0.3.0] - 2026-09-28
 
 ### Removed
