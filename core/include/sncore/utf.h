@@ -1,5 +1,6 @@
 #pragma once
 
+#include "sncore/api.h"
 #include "sncore/platform.h"
 
 #include <stddef.h>
@@ -17,7 +18,7 @@
  * @return On success: number of wchar_t written (excluding null terminator).
  *         On error: (size_t)-1.
  */
-size_t sn_utf8_to_utf16(const char *utf8, wchar_t *utf16, size_t utf16_count);
+SN_CORE_API size_t sn_utf8_to_utf16(const char *utf8, wchar_t *utf16, size_t utf16_count);
 
 /**
  * @brief Convert UTF-16 to UTF-8 (snprintf-like API).
@@ -32,4 +33,4 @@ size_t sn_utf8_to_utf16(const char *utf8, wchar_t *utf16, size_t utf16_count);
  * @return On success: number of chars written (excluding null terminator).
  *         On error: (size_t)-1.
  */
-size_t sn_utf16_to_utf8(const wchar_t *utf16, char *utf8, size_t utf8_count);
+SN_CORE_API size_t sn_utf16_to_utf8(const wchar_t *utf16, char *utf8, size_t utf8_count);

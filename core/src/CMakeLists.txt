@@ -1,9 +1,11 @@
 set(HEADERFILES
+    api.h
     api_common.h
     defines.h
     platform.h
     types.h
     utf.h
+    utils.h
 )
 
 
